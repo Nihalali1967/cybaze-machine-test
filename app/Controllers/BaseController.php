@@ -32,14 +32,11 @@ abstract class BaseController extends Controller
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Load here all helpers you want to be available in your controllers that extend BaseController.
-        // Caution: Do not put the this below the parent::initController() call below.
-        // $this->helpers = ['form', 'url'];
+        // `form` and `url` are needed by every view (form_open, anchor, ...).
+        // Caution: Do not put this below the parent::initController() call.
+        $this->helpers = ['form', 'url'];
 
         // Caution: Do not edit this line.
         parent::initController($request, $response, $logger);
-
-        // Preload any models, libraries, etc, here.
-        // $this->session = service('session');
     }
 }
